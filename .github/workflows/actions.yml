@@ -1,0 +1,20 @@
+name: CICD - Detection fraude
+
+on:
+  push:
+    branches: [main, dev]
+  pull_request:
+    branches: [main, dev]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dependencies Installed
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run scripts
+        run:
+        "python ./app/app.py"
